@@ -1,0 +1,19 @@
+FROM node:18-alpine
+
+#specifying user as node  as opposed to root(default)
+USER node
+
+#This will prevent a permissions issue 
+#since WORKDIR by default will create a directory if it does not exist and set ownership to root
+RUN mkdir -p /home/node/app
+WORKDIR /home/node/app
+
+#The inline chown commands will set ownership of the files you are copying from 
+#your local environment to the node user in the container.
+COPY --chown=node:node ./package.json ./
+RUN npm install
+
+COPY --chown=node:node ./ ./
+
+CMD ["npm", "run", "start"]
+
