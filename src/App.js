@@ -9,7 +9,7 @@ function App() {
         <p>
           Hello Docker :D
         </p>
-        <h5>Generated via docker-compose</h5>
+        <h5>Deployed through CI/CD</h5>
         <a
           className="App-link"
           href="https://reactjs.org"
